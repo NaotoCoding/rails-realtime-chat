@@ -12,5 +12,7 @@
 #  index_chat_rooms_on_name  (name) UNIQUE
 #
 class ChatRoom < ApplicationRecord
+  has_many :chat_messages, dependent: :destroy
+
   validates :name, presence: true, uniqueness: true
 end

@@ -12,6 +12,8 @@
 #  index_users_on_nickname  (nickname) UNIQUE
 #
 class User < ApplicationRecord
+  has_many :chat_messages, dependent: :destroy
+
   # あくまでチャットアプリのサンプルなのでログイン機構は省略
   validates :nickname, presence: true, uniqueness: true
 end
