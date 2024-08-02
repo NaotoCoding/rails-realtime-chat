@@ -8,5 +8,6 @@ class ChatRoomsController < ApplicationController
   def show
     @chat_room = current_user.chat_rooms.find(params[:id])
     @chat_messages = @chat_room.chat_messages
+    @chat_message = @chat_room.chat_messages.build
   end
 end

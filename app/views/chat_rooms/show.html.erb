@@ -3,9 +3,20 @@
 <h1><%= @chat_room.name %></h1>
 
 <% @chat_messages.each do |chat_message| %>
+  <% next unless chat_message.persisted? %>
+
   <div>
     <%= chat_message.user.nickname %>
     <br>
     <%= chat_message.message %>
   </div>
+<% end %>
+
+<%= form_with model: @chat_message, url: chat_room_chat_messages_path(@chat_room) do |f| %>
+  <% @chat_message.errors.full_messages.each do |error_message| %>
+    <div><%= error_message %></div>
+  <% end %>
+
+  <%= f.text_field :message %>
+  <%= f.submit "送信" %>
 <% end %>
