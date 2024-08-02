@@ -63,5 +63,6 @@ Rails.application.configure do
   config.generators do |g|
     g.assets false
     g.test_framework false
+    g.helper false
   end
 end
