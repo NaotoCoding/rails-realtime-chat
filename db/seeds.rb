@@ -11,3 +11,13 @@
 ["First User", "Second User", "Third User"].each do |nickname|
   User.create!(nickname:)
 end
+
+chat_room = ChatRoom.create!(name: "First Chat Room")
+["First User", "Second User"].each do |nickname|
+  ChatRoomMember.create!(chat_room:, user: User.find_by!(nickname:))
+end
+
+chat_room = ChatRoom.create!(name: "Second Chat Room")
+["First User", "Third User"].each do |nickname|
+  ChatRoomMember.create!(chat_room:, user: User.find_by!(nickname:))
+end
