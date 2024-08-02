@@ -14,10 +14,14 @@ end
 
 chat_room = ChatRoom.create!(name: "First Chat Room")
 ["First User", "Second User"].each do |nickname|
-  ChatRoomMember.create!(chat_room:, user: User.find_by!(nickname:))
+  user = User.find_by!(nickname:)
+  ChatRoomMember.create!(chat_room:, user:)
+  ChatMessage.create!(chat_room:, user:, message: "Message from #{user.nickname}")
 end
 
 chat_room = ChatRoom.create!(name: "Second Chat Room")
 ["First User", "Third User"].each do |nickname|
-  ChatRoomMember.create!(chat_room:, user: User.find_by!(nickname:))
+  user = User.find_by!(nickname:)
+  ChatRoomMember.create!(chat_room:, user:)
+  ChatMessage.create!(chat_room:, user:, message: "Message from #{user.nickname}")
 end
