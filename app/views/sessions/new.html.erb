@@ -1,0 +1,4 @@
+<%= form_with url: users_sign_in_url do |f| %>
+  <%= f.collection_select :user_id, @users, :id, :nickname %>
+  <%= f.submit "ログイン" %>
+<% end %>
