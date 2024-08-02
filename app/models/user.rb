@@ -13,6 +13,7 @@
 #
 class User < ApplicationRecord
   has_many :chat_messages, dependent: :destroy
+  has_many :chat_room_members, dependent: :destroy
 
   # あくまでチャットアプリのサンプルなのでログイン機構は省略
   validates :nickname, presence: true, uniqueness: true
