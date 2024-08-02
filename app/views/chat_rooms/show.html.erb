@@ -1,0 +1,11 @@
+<%= link_to "チャットルーム一覧", chat_rooms_path %>
+
+<h1><%= @chat_room.name %></h1>
+
+<% @chat_messages.each do |chat_message| %>
+  <div>
+    <%= chat_message.user.nickname %>
+    <br>
+    <%= chat_message.message %>
+  </div>
+<% end %>
