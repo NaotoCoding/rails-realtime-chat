@@ -1,0 +1,8 @@
+<%= form_with model: chat_message, url: chat_room_chat_messages_path(chat_room) do |f| %>
+  <% chat_message.errors.full_messages.each do |error_message| %>
+    <div><%= error_message %></div>
+  <% end %>
+
+  <%= f.text_field :message %>
+  <%= f.submit "送信" %>
+<% end %>

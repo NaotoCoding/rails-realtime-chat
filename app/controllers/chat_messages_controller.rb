@@ -7,10 +7,10 @@ class ChatMessagesController < ApplicationController
     @chat_message.user = current_user
 
     if @chat_message.save
-      redirect_to chat_room_path(@chat_room)
+      render "chat_rooms/create_chat_message_success"
     else
       @chat_messages = @chat_room.chat_messages
-      render "chat_rooms/show", status: :unprocessable_entity
+      render "chat_rooms/create_chat_message_failure", status: :unprocessable_entity
     end
   end
 

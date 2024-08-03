@@ -2,21 +2,16 @@
 
 <h1><%= @chat_room.name %></h1>
 
-<% @chat_messages.each do |chat_message| %>
-  <% next unless chat_message.persisted? %>
+<%= turbo_stream_from "chat_room_#{@chat_room.id}" %>
 
-  <div>
-    <%= chat_message.user.nickname %>
-    <br>
-    <%= chat_message.message %>
-  </div>
-<% end %>
+<div id="chat-messages">
+  <% @chat_messages.each do |chat_message| %>
+    <% next unless chat_message.persisted? %>
 
-<%= form_with model: @chat_message, url: chat_room_chat_messages_path(@chat_room) do |f| %>
-  <% @chat_message.errors.full_messages.each do |error_message| %>
-    <div><%= error_message %></div>
+    <%= render "chat_message", chat_message: %>
   <% end %>
+</div>
 
-  <%= f.text_field :message %>
-  <%= f.submit "送信" %>
-<% end %>
+<div id="chat-message-form">
+  <%= render "chat_message_form", chat_message: @chat_message, chat_room: @chat_room %>
+</div>

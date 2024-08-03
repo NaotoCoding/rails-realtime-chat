@@ -1,0 +1,2 @@
+<%= turbo_stream.update "chat-message-form", partial: "chat_rooms/chat_message_form", locals: { chat_message: @chat_room.chat_messages.build, chat_room: @chat_room } %>
+<% @chat_message.broadcast_append_to("chat_room_#{@chat_room.id}", target: "chat-messages", partial: "chat_rooms/chat_message") %>

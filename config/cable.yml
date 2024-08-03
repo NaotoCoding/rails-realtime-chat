@@ -1,0 +1,7 @@
+development:
+  adapter: redis
+  url: redis://localhost:6379/0
+  channel_prefix: rails-realtime-chat
+
+test:
+  adapter: test
